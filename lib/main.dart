@@ -1,14 +1,17 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:hidoc/home/desktop/pc_home_view.dart';
 import 'package:hidoc/home/mobile/home_view.dart';
 import 'package:hidoc/responsiveness/ResponsiveLayout.dart';
 
 import 'api/httpover.dart';
 
-void main() {
+Future main() async {
   // HttpOverrides.global = new MyHttpOverrides();
+  WidgetsFlutterBinding.ensureInitialized();
+  await dotenv.load(fileName: ".env");
   runApp(const MyApp());
 }
 

@@ -18,6 +18,8 @@ class ImageAndText extends StatelessWidget {
             fit: BoxFit.cover,
             errorBuilder: (context, error, stackTrace) {
               return Image.network(
+                width: 100.0,
+            height: 100.0,
                   'https://demofree.sirv.com/nope-not-here.jpg');
             },
           ),

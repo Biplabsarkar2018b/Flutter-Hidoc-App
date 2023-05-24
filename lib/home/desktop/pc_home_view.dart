@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
 import 'package:hidoc/home/desktop/article_card_pc.dart';
 import 'package:hidoc/home/desktop/hidocBulletin.dart';
@@ -125,9 +126,9 @@ class _PCHomeViewState extends State<PCHomeView> {
   }
 
   void fetchUsers() async {
-    const url =
-        'http://devapi.hidoc.co:8080/HidocWebApp/api/getArticlesByUid?sId=500&uuId=&userId=423914';
-    final uri = Uri.parse(url);
+    var url =
+        dotenv.env['URL'];
+    final uri = Uri.parse(url!);
     final response = await http.post(uri);
     final body = response.body;
     final js = jsonDecode(body.toString());
@@ -143,7 +144,7 @@ class _PCHomeViewState extends State<PCHomeView> {
       // exploreArticle = js['data']['exploreArticle'];
       trandingArticle = js['data']['trandingArticle'];
       article = js['data']['article'];
-      print(js['data']['article']);
+      // print(js['data']['article']);
       bulletin = js['data']['bulletin'];
     });
   }
